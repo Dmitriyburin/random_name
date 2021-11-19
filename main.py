@@ -15,7 +15,7 @@ class Example(QWidget):
         self.button_clicked = None
 
     def initUI(self):
-        uic.loadUi('untitled.ui', self)
+        uic.loadUi('UI.ui', self)
         self.setWindowTitle('main')
         self.do_paint = False
         self.setMouseTracking(True)
@@ -39,25 +39,12 @@ class Example(QWidget):
     def click(self):
         self.paint()
 
-    def draw_square(self, qp):
-        qp.setBrush(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
-        side = randint(5, 100)
-        qp.drawRect(self.mouse_x - side // 2, self.mouse_y - side // 2, side, side)
-
     def draw_circle(self, qp):
         qp.setBrush(QColor(246, 255, 0))
         diameter = randint(5, 100)
         qp.drawEllipse(0, 0,
                        diameter, diameter)
 
-    def draw_triangle(self, qp):
-        print('yep')
-        qp.setBrush(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
-        side = randint(5, 100)
-        points = QPolygon([self.mouse_x, int(self.mouse_y - side * 0.6),
-                           int(self.mouse_x + side // 2), int(self.mouse_y + side * 0.3),
-                           int(self.mouse_x - side // 2), int(self.mouse_y + side * 0.3)])
-        qp.drawPolygon(points)
 
 
 if __name__ == '__main__':
