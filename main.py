@@ -16,7 +16,7 @@ class Example(QWidget):
 
     def initUI(self):
         uic.loadUi('untitled.ui', self)
-        self.setWindowTitle('Супрематизм')
+        self.setWindowTitle('main')
         self.do_paint = False
         self.setMouseTracking(True)
 
