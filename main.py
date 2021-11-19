@@ -2,12 +2,13 @@ import sys
 from random import randint
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget, QApplication, QLabel
+from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel
 from PyQt5.QtGui import QPainter, QColor, QPolygon
 from PyQt5 import uic
+from UI import Ui_Form
 
 
-class Example(QWidget):
+class Example(QMainWindow, Ui_Form):
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -15,7 +16,7 @@ class Example(QWidget):
         self.button_clicked = None
 
     def initUI(self):
-        uic.loadUi('UI.ui', self)
+        self.setupUi(self)
         self.setWindowTitle('main')
         self.do_paint = False
         self.setMouseTracking(True)
@@ -40,11 +41,10 @@ class Example(QWidget):
         self.paint()
 
     def draw_circle(self, qp):
-        qp.setBrush(QColor(246, 255, 0))
+        qp.setBrush(QColor(randint(0, 255), randint(0, 255), randint(0, 255)))
         diameter = randint(5, 100)
         qp.drawEllipse(0, 0,
                        diameter, diameter)
-
 
 
 if __name__ == '__main__':
